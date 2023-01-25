@@ -1,7 +1,11 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
+import { AntDesign } from '@expo/vector-icons';
+
 import Home from '../pages/Home';
+import SingIn from '../pages/SingIn';
+import SingUp from '../pages/SingUp';
 
 export default function AppRoutes(){
 
@@ -9,9 +13,16 @@ export default function AppRoutes(){
     const AppTabs = createBottomTabNavigator();
 
     function Tabs(){
-        <AppTabs.Navigator>
+
+        return(
+            
+        <AppTabs.Navigator
+            screenOptions={{
+                tabBarShowLabel: false,
+            }}
+        >
             <AppTabs.Screen
-                name='Home'
+                name='Home1'
                 component={Home}
                 options={{
                     headerShown: false,
@@ -21,17 +32,38 @@ export default function AppRoutes(){
                     }
                         return <AntDesign name="home" size={24} color="#DDD" />
 
-                    } 
+                    }
                 }}
+                
             />
         </AppTabs.Navigator>
+        )
+
+
     }
 
     return(
         <AppStack.Navigator>
             <AppStack.Screen
-                name='Home'
+                name='Home2'
                 component={Tabs}
+                options={{
+                    headerShown: false,
+                }}
+            />
+            <AppStack.Screen
+                name='SingIN'
+                component={SingIn}
+                options={{
+                    headerShown: false,
+                }}
+            />
+            <AppStack.Screen
+                name='SingUp'
+                component={SingUp}
+                options={{
+                    headerShown: false,
+                }}
             />
         </AppStack.Navigator>
     );
